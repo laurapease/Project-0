@@ -42,6 +42,11 @@ console.log(Pet1, Pet2, Pet3);
 //   console.log("Game over!");
 //}
 
+///Start game
+$("#start").on("click", function () {
+  prompt("What is your pet's name?");
+});
+
 class Person {
   constructor(name, age, eyes, hair) {
     this.legs = 2;
