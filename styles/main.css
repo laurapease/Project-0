@@ -1,3 +1,10 @@
-h1 {
-  color: teal;
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.button {
+  margin: 40px;
 }

@@ -30,9 +30,14 @@ class Pet {
     this.name = name;
   }
 }
-
+// figure out how to name pet what the user enters into promppt//
 const Pet1 = new Pet("Tank", 5);
 const Pet2 = new Pet("Boots", 5);
-const Pet3 = new Pet("Flipper", 1);
+const Pet3 = new Pet("Big Bird", 1);
 
 console.log(Pet1, Pet2, Pet3);
+
+// end of game ?
+// if (this.hunger >= 10 || this.sleepiness >= 10 || this.boredom >= 10) {
+//   console.log("Game over!");
+//}
