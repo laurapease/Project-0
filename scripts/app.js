@@ -41,3 +41,27 @@ console.log(Pet1, Pet2, Pet3);
 // if (this.hunger >= 10 || this.sleepiness >= 10 || this.boredom >= 10) {
 //   console.log("Game over!");
 //}
+
+class Person {
+  constructor(name, age, eyes, hair) {
+    this.legs = 2;
+    this.arms = 2;
+    this.name = name;
+    this.age = age;
+    this.eyes = eyes;
+    this.hair = hair;
+  }
+  setHair(hairColor) {
+    this.hair = hairColor;
+  }
+  greet(otherPerson) {
+    console.log("hi " + otherPerson + "!");
+  }
+  jump() {
+    console.log("weeee!");
+  }
+}
+
+class SuperHero extends Person {}
+const superman = new SuperHero("Clark Kent", 30, "blue", "black");
+console.log(superman);
