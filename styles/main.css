@@ -1,13 +1,19 @@
+/* URL for background when sleeping https://images-na.ssl-images-amazon.com/images/I/71ut-GH-boL._AC_SX522_.jpg */
+
 body {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   font-family: Ranchers, sans-serif;
+  background-image: url(https://wallpaperaccess.com/full/1128300.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
 }
 
 .button {
-  margin: 300px 100px 50px 100px;
+  margin: 300px 20px 50px 100px;
   padding: 20px;
   border-radius: 50%;
   font-size: 20px;
@@ -17,17 +23,17 @@ body {
   font-weight: bold;
 }
 
-#evolve {
-  margin: 0 auto;
-  align-items: center;
-}
-
 .button-large {
   margin: 40px;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 30px;
   font-size: 30px;
   font-family: Ranchers, sans-serif;
+}
+
+#subButton {
+  color: red;
+  border-radius: 30px;
 }
 
 button:hover {
@@ -59,4 +65,5 @@ button:hover {
 }
 #timer {
   color: teal;
+  font-size: 20px;
 }
