@@ -67,3 +67,17 @@ button:hover {
   color: teal;
   font-size: 20px;
 }
+
+/* #Progress_Status { 
+  width: 50%; 
+  background-color: #ddd; 
+}  */
+
+#hunger {
+  width: 10%;
+  height: 35px;
+  background-color: #4caf50;
+  text-align: center;
+  line-height: 32px;
+  color: black;
+}
