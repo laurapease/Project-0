@@ -37,7 +37,7 @@ button:hover {
   top: 50px;
 }
 #reset {
-  color: palevioletred;
+  color: teal;
   position: absolute;
   right: 100px;
   top: 50px;
@@ -45,6 +45,7 @@ button:hover {
 
 .meter {
   margin: 0 auto;
+  text-align: center;
   width: 15em;
   border: 1px solid #333;
   box-shadow: 8px 8px 5px #444;

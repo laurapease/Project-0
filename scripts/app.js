@@ -42,9 +42,10 @@ console.log(Pet1, Pet2, Pet3);
 //   console.log("Game over!");
 //}
 
-///Start game
+///Start game prompt when click Adopt Pet Button
 $("#start").on("click", function () {
-  prompt("What is your pet's name?");
+  let name = prompt("What is your pet's name?");
+  alert(`OK let us go and meet ${name}!!`);
 });
 
 class Person {
