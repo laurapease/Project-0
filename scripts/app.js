@@ -31,11 +31,11 @@ class Pet {
   }
 }
 // figure out how to name pet what the user enters into promppt//
-const Pet1 = new Pet("Tank", 5);
-const Pet2 = new Pet("Boots", 5);
-const Pet3 = new Pet("Big Bird", 1);
+const Baby = new Pet("Tank", 5);
+const Adult = new Pet("Boots", 10);
+const Elder = new Pet("Big Bird", 15);
 
-console.log(Pet1, Pet2, Pet3);
+console.log(Baby, Adult, Elder);
 
 // end of game ?
 // if (this.hunger >= 10 || this.sleepiness >= 10 || this.boredom >= 10) {
@@ -44,9 +44,33 @@ console.log(Pet1, Pet2, Pet3);
 
 ///Start game prompt when click Adopt Pet Button
 $("#start").on("click", function () {
-  let name = prompt("What is your pet's name?");
-  alert(`OK let us go and meet ${name}!!`);
+  let name = prompt("What is your name?");
+  alert(
+    `Hi ${name}! Name your pet in the input below, then it's time to go meet your new family member!!!`
+  );
 });
+
+//https://stackoverflow.com/questions/17433557/how-to-save-user-input-into-a-variable-in-html-and-js
+
+function getUserName() {
+  var nameField = document.getElementById("nameField").value;
+  var result = document.getElementById("result");
+
+  if (nameField.length < 3) {
+    result.textContent = "Username must contain at least 3 characters";
+    //alert('Username must contain at least 3 characters');
+  } else {
+    result.textContent = "Your pet's name is: " + nameField;
+    //alert(nameField);
+  }
+}
+var subButton = document.getElementById("subButton");
+subButton.addEventListener("click", getUserName, false);
+
+function hide() {
+  var div = document.getElementyById("subbutton");
+  div.style.display = "none";
+}
 
 class Person {
   constructor(name, age, eyes, hair) {

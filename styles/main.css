@@ -17,6 +17,11 @@ body {
   font-weight: bold;
 }
 
+#evolve {
+  margin: 0 auto;
+  align-items: center;
+}
+
 .button-large {
   margin: 40px;
   padding: 10px;
@@ -43,7 +48,7 @@ button:hover {
   top: 50px;
 }
 
-.meter {
+.meters {
   margin: 0 auto;
   text-align: center;
   width: 15em;
