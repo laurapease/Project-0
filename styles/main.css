@@ -11,9 +11,26 @@ body {
   background-attachment: fixed;
   background-position: center;
 }
-
+.target {
+  background-color: blueviolet;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  position: relative;
+}
 .button {
-  margin: 300px 20px 50px 100px;
+  margin: 200px 20px 50px 20px;
+  padding: 20px;
+  border-radius: 50%;
+  font-size: 20px;
+  color: teal;
+  background-color: lightpink;
+  font-family: Ranchers, sans-serif;
+  font-weight: bold;
+}
+
+.button-evolve {
+  margin: 0 50px 10px 100px;
   padding: 20px;
   border-radius: 50%;
   font-size: 20px;
@@ -32,13 +49,20 @@ body {
 }
 
 #subButton {
-  color: red;
+  color: teal;
   border-radius: 30px;
+  font-family: Ranchers, sans-serif;
+  margin: 10px 0 0 50px;
 }
 
 button:hover {
   cursor: pointer;
   background-color: purple;
+}
+
+#result {
+  color: black;
+  margin: 10px 0 0 50px;
 }
 
 #start {
@@ -74,8 +98,8 @@ button:hover {
 }  */
 
 #hunger {
-  width: 10%;
-  height: 35px;
+  width: 20%;
+  height: 30px;
   background-color: #4caf50;
   text-align: center;
   line-height: 32px;
