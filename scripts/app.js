@@ -85,6 +85,10 @@ $("#subButton").on("click", (event) => {
   $(event.currentTarget).hide();
 });
 
+$("#subButton").on("click", (event) => {
+  $(".pet").css("background-image", "url("https://imgur.com/zU2FrKo")");
+});
+
 function timer() {
   var sec = 100;
   var timer = setInterval(function () {
@@ -168,6 +172,13 @@ $("#play").click(function () {
 // $("#sleep").click(function () {
 //   $("backgounde").toggle("slow", 0.5, function () {});
 // });
+
+$("#sleep").on("click", (event) => {
+  $();
+});
+
+// $(".sleep").on({
+//   click: function () {
 
 //????????
 // $("#sleep").on("click", function () {
