@@ -1,11 +1,3 @@
-// Baby cat url: https://imgur.com/zU2FrKo
-// adult cat url: https://imgur.com/roGBcpz
-// elder cat url: https://imgur.com/wLbZHfr
-
-// baby dog url: https://imgur.com/Qqv15yM
-// adult dog url: https://imgur.com/79uPelw
-// elder dog url: https://imgur.com/ZHCoxvs
-
 // background image if i toggle to a diffent img for sleep: img src="https://images-na.ssl-images-amazon.com/images/I/71ut-GH-boL._AC_SX522_.jpg"'
 //   );
 
@@ -85,14 +77,38 @@ $("#subButton").on("click", (event) => {
   $(event.currentTarget).hide();
 });
 
-$("#subButton").on("click", (event) => {
-  $(".pet").css("background-image", "url("https://imgur.com/zU2FrKo")");
+$("#subButton").on("click", () => {
+  $("#egg").attr(
+    "src",
+    "https://i.pinimg.com/236x/6d/e6/1d/6de61dc6e639eff6b8082e568ab06783.jpg"
+  );
+});
+
+$("#elephant").on("click", () => {
+  $("#egg").attr(
+    "src",
+    "https://i.pinimg.com/236x/6d/e6/1d/6de61dc6e639eff6b8082e568ab06783.jpg"
+  );
+});
+
+$("#fox").on("click", () => {
+  $("#egg").attr(
+    "src",
+    "https://i.pinimg.com/474x/8b/14/c5/8b14c53d10a8cbb07e0fcd9aaffcffff.jpg"
+  );
+});
+
+$("#cat").on("click", () => {
+  $("#egg").attr(
+    "src",
+    "https://www.pngfind.com/pngs/m/140-1401390_pink-pixel-kitten-perler-bead-pattern-bead-sprite.png"
+  );
 });
 
 function timer() {
   var sec = 100;
   var timer = setInterval(function () {
-    document.getElementById("countdown").innerHTML = "00:" + sec;
+    document.getElementById("timer").innerHTML = "00:" + sec;
     sec--;
     if (sec < 0) {
       clearInterval(timer);
