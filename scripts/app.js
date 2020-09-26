@@ -29,24 +29,37 @@
 
 ///Start game prompt when click Adopt Pet Button
 
+function timer() {
+  var sec = 300;
+  var timer = setInterval(function () {
+    document.getElementById("timer").innerHTML = "Timer: " + sec + " seconds";
+    sec--;
+    if (sec < 0) {
+      clearInterval(timer);
+    }
+    if (sec % 10 === 0) {
+      Charmander.hunger += 1;
+      petHunger();
+    }
+    if (sec % 10 === 0) {
+      Charmander.age += 1;
+      petAge();
+    }
+  }, 1000);
+}
+
 $("#start").on("click", function () {
   let name = prompt("What is your name?");
   alert(
-    `Hi ${name}! Meet your new pet! We call them Charmander, but you can name them whatever you'd like. First, click on 'Adopt Charmander.' Then name your pet. The timer will start once you've added you pet's name!!`
+    `Hi ${name}! Meet your new pet! We call them Charmander, but you can name them whatever you'd like. First, click on 'Adopt Charmander.' Then name your pet. The timer will start once you've added your pet's name!!`
   );
 });
-
-// HOW DO I RESET THE PAGE WITH A BUTTON CLICK??
-
-// $("#reset").click(function () {
-//   $(".container").reset();
-// });
 
 //SOURCE: https://stackoverflow.com/questions/17433557/how-to-save-user-input-into-a-variable-in-html-and-js
 
 function getUserName() {
-  var nameField = document.getElementById("nameField").value;
-  var result = document.getElementById("result");
+  let nameField = document.getElementById("nameField").value;
+  let result = document.getElementById("result");
 
   if (nameField.length < 3) {
     result.textContent = "Username must contain at least 3 characters";
@@ -56,6 +69,11 @@ function getUserName() {
     //alert(nameField);
   }
 }
+
+let hunger = Math.floor(Math.random() * (5 - 1 + 1)) + 1;
+let sleepiness = Math.floor(Math.random() * (5 - 1 + 1)) + 1;
+let boredom = Math.floor(Math.random() * (5 - 1 + 1)) + 1;
+let name;
 
 class Pet {
   constructor(name, hunger, sleepiness, boredom, age) {
@@ -84,25 +102,42 @@ class Pet {
   }
 }
 
-let hunger = Math.floor(Math.random() * (5 - 1 + 1)) + 1;
-let sleepiness = Math.floor(Math.random() * (5 - 1 + 1)) + 1;
-let boredom = Math.floor(Math.random() * (5 - 1 + 1)) + 1;
-let name;
-
 let Charmander = new Pet((name = "Charmander"), hunger, sleepiness, boredom, 0);
 // let Abra = new Pet(name, hunger, sleepiness, boredom, 0);
 // let Charmander = new Pet(name, hunger, sleepiness, boredom, 0);
 
 console.log(Charmander);
 
+const endOfGame = function () {
+  if (
+    Charmander.hunger >= 10 ||
+    Charmander.sleepiness >= 10 ||
+    Charmander.boredom >= 10 ||
+    Charmander.age >= 10
+  ) {
+    alert("Game over!");
+  }
+};
+endOfGame();
+
+//BUTTONS
+
+// RESET GAME BUTTON
+
+$("#reset").click(function () {
+  location.reload(true);
+  alert("Let's try again!");
+});
+
 var subButton = document.getElementById("subButton");
 subButton.addEventListener("click", getUserName, false);
 
-//Submit name button dissappears when clicked - IT WORKS!
+//Submit name button dissappears when clicked
 
 $("#subButton").on("click", (event) => {
   // $(event.currentTarget) refers to the '#menu' element that was clicked.
   $(event.currentTarget).hide();
+  timer();
 });
 
 //Would love to make the ipiut field hide when subButton is clicked. Work on that.
@@ -114,52 +149,32 @@ $("#charmander").on("click", () => {
   );
 });
 
-// NOT WORKING
+// Click Charmeleon button to evolve when prompted.
 
 $("#charmeleon").on("click", () => {
   $("#egg").attr(
     "src",
     "https://66.media.tumblr.com/tumblr_ma4fpfD6Tu1rfjowdo1_500.gif"
   );
+  return false;
 });
 
-// NOT WORKING
+//Click Charlizard button to evolve when prompted
 
-$("#charmander").on("click", () => {
+$("#charlizard").on("click", () => {
   $("#egg").attr(
     "src",
-    "https://thumbs.gfycat.com/ShyImperturbableAlpaca-max-1mb.gif"
+    "https://66.media.tumblr.com/tumblr_ma4fsg8aDZ1rfjowdo1_500.gif"
   );
+  return false;
 });
 
-function timer() {
-  var sec = 300;
-  var timer = setInterval(function () {
-    document.getElementById("timer").innerHTML = "Timer: " + sec + " seconds";
-    sec--;
-    if (sec < 0) {
-      clearInterval(timer);
-    }
-  }, 1000);
-}
+// REFERENCE FOR BUTTONS:
 
-timer();
-
-//Button Functions
-
-//use jquery .fadeToggle to make food fade in and out when clicked
-// Example:
-//$('#menu-button').on('click', () => {
-// ( equivalent to )
-//$('#menu').fadeToggle(400, 'swing')
-// $('#menu').fadeToggle();
-// });
-
-let feed = document.getElementById("feed");
-function feedPet() {
-  Charmander.hunger = Charmander.hunger - 1;
-  alert("you fed me!");
-}
+//     <div class="meters" id="hunger">Hunger Level: <span id="hunger-level"></span></div>
+//     <div class="meters" id="sleepiness">Tiredness Level: <span id="sleepiness-level"></span></div>
+//     <div class="meters" id="boredom">Boredom Level: <span id="boredom-level"></span></div>
+//     <div class="meters" id="age">Age: <span id="age-level"></span></div>
 
 const chooseName = document.getElementById("subButton");
 
@@ -192,6 +207,12 @@ $("#play").click(function () {
   Charmander.boredom -= 1;
 });
 
+let feed = document.getElementById("feed");
+function feedPet() {
+  Charmander.hunger = Charmander.hunger - 1;
+  alert("you fed me!");
+}
+
 // Potentially use sligeToggle to make the moon rise and fall when sleep is clicked. Also, change opacity so the screen darkens when sleep is clicked. Do the opposite for wake up (or take wake up out if I can set a timer of sorts on this function.
 // $('#sleep').on('click', () => {
 //     $('#sleep').slideToggle();
@@ -203,9 +224,11 @@ $("#play").click(function () {
 // $(document).ready(function () {
 //   // Set background image of a div on click of the button
 
-$("#sleep").click(function () {
-  $(".container").toggleClass(".container-night");
-});
+// Trying to change background when sleep button is clicked
+
+// $("#sleep").click(function () {
+//   $(".container").toggleClass(".container-night");
+// });
 
 // $("#sleep").click(function () {
 //   $("backgounde").toggle("slow", 0.5, function () {});
@@ -223,105 +246,92 @@ $("#sleep").click(function () {
 
 // END OF GAME
 
-const endOfGame = function () {
-  if (
-    Charmander.hunger >= 10 ||
-    Charmander.sleepiness >= 10 ||
-    Charmander.boredom >= 10 ||
-    Charmander.age >= 10
-  ) {
-    alert("Game over!");
-  }
-};
-
-endOfGame();
-
 // HUNGER METER
 
-var i = 0;
-function moveHunger() {
-  if (i == 0) {
-    i = 1;
-    var elem = document.getElementById("hunger");
-    var width = 1;
-    var id = setInterval(frame, 1000);
-    function frame() {
-      if (width >= 100) {
-        clearInterval(id);
-        i = 0;
-      } else {
-        width++;
-        elem.style.width = width + "%";
-      }
-    }
-  }
-}
+// var i = 0;
+// function moveHunger() {
+//   if (i == 0) {
+//     i = 1;
+//     var elem = document.getElementById("hunger");
+//     var width = 1;
+//     var id = setInterval(frame, 1000);
+//     function frame() {
+//       if (width >= 100) {
+//         clearInterval(id);
+//         i = 0;
+//       } else {
+//         width++;
+//         elem.style.width = width + "%";
+//       }
+//     }
+//   }
+// }
 
-// moveHunger();
+// // moveHunger();
 
-//SLEEPINESS METER
+// //SLEEPINESS METER
 
-var i = 0;
-function moveSleepiness() {
-  if (i == 0) {
-    i = 1;
-    var elem = document.getElementById("sleepiness");
-    var width = 1;
-    var id = setInterval(frame, 1000);
-    function frame() {
-      if (width >= 100) {
-        clearInterval(id);
-        i = 0;
-      } else {
-        width++;
-        elem.style.width = width + "%";
-      }
-    }
-  }
-}
+// var i = 0;
+// function moveSleepiness() {
+//   if (i == 0) {
+//     i = 1;
+//     var elem = document.getElementById("sleepiness");
+//     var width = 1;
+//     var id = setInterval(frame, 1000);
+//     function frame() {
+//       if (width >= 100) {
+//         clearInterval(id);
+//         i = 0;
+//       } else {
+//         width++;
+//         elem.style.width = width + "%";
+//       }
+//     }
+//   }
+// }
 
-// moveSleepiness();
+// // moveSleepiness();
 
-var i = 0;
-function moveBoredom() {
-  if (i == 0) {
-    i = 1;
-    var elem = document.getElementById("boredom");
-    var width = 1;
-    var id = setInterval(frame, 1000);
-    function frame() {
-      if (width >= 100) {
-        clearInterval(id);
-        i = 0;
-      } else {
-        width++;
-        elem.style.width = width + "%";
-      }
-    }
-  }
-}
+// var i = 0;
+// function moveBoredom() {
+//   if (i == 0) {
+//     i = 1;
+//     var elem = document.getElementById("boredom");
+//     var width = 1;
+//     var id = setInterval(frame, 1000);
+//     function frame() {
+//       if (width >= 100) {
+//         clearInterval(id);
+//         i = 0;
+//       } else {
+//         width++;
+//         elem.style.width = width + "%";
+//       }
+//     }
+//   }
+// }
 
-// moveBoredom();
+// // moveBoredom();
 
-// AGE LEVEL
+// // AGE LEVEL
 
-var i = 0;
-function moveAge() {
-  if (i == 0) {
-    i = 1;
-    var elem = document.getElementById("age");
-    var width = 1;
-    var id = setInterval(frame, 3000);
-    function frame() {
-      if (width >= 100) {
-        clearInterval(id);
-        i = 0;
-      } else {
-        width++;
-        elem.style.width = width + "%";
-      }
-    }
-  }
-}
+// var i = 0;
+// function moveAge() {
+//   if (i == 0) {
+//     i = 1;
+//     var elem = document.getElementById("age");
+//     var width = 1;
+//     var id = setInterval(frame, 3000);
+//     function frame() {
+//       if (width >= 100) {
+//         clearInterval(id);
+//         i = 0;
+//       } else {
+//         width++;
+//         elem.style.width = width + "%";
+//       }
+//     }
+//   }
+// }
 
 // moveAge();

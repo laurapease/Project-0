@@ -6,22 +6,12 @@
   align-items: center;
   flex-direction: column;
   font-family: Ranchers, sans-serif;
-  background-image: url(https://wallpaperaccess.com/full/1128300.jpg);
+  /* background-image: url(https://wallpaperaccess.com/full/1128300.jpg); */
+  background-image: url(https://dbdzm869oupei.cloudfront.net/img/photomural/large/5dcd3d930e789.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
-}
-
-.container-night {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  font-family: Ranchers, sans-serif;
-  background-image: url(https://images-na.ssl-images-amazon.com/images/I/71ut-GH-boL._AC_SX522_.jpg);
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
+  background-size: cover;
 }
 
 /* .dark-mode {
@@ -37,18 +27,7 @@
 } */
 
 .button {
-  margin: 30px 10px 50px 10px;
-  padding: 20px;
-  border-radius: 50%;
-  font-size: 20px;
-  color: teal;
-  background-color: lightpink;
-  font-family: Ranchers, sans-serif;
-  font-weight: bold;
-}
-
-.button-evolve {
-  margin: 0 50px 10px 100px;
+  margin: 30px 10px 30px 10px;
   padding: 20px;
   border-radius: 50%;
   font-size: 20px;
@@ -74,15 +53,6 @@
   font-family: Ranchers, sans-serif;
   color: teal;
 }
-
-/* .pet {
-  background-color: #9DE2FF;
-  margin: 20px 0 0 0;
-  width: 100px;
-  height: 150px;
-  border-radius: 50%;
-  position: relative;
-}  */
 
 #egg {
   width: 100px;
@@ -122,7 +92,7 @@ button:hover {
 .meters {
   margin: 0 auto;
   text-align: center;
-  width: 15em;
+  width: 10em;
   border: 1px solid #333;
   box-shadow: 8px 8px 5px #444;
   padding: 8px 10px;
@@ -132,18 +102,5 @@ button:hover {
   color: black;
   font-size: 30px;
   margin: 10px 0 20px 0;
-}
-
-/* #Progress_Status { 
-  width: 50%; 
-  background-color: #ddd; 
-}  */
-
-#hunger {
-  width: 20%;
-  height: 30px;
-  background-color: #4caf50;
-  text-align: center;
-  line-height: 32px;
-  color: black;
+  /* border: 5px solid #333; */
 }
