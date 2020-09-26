@@ -1,6 +1,10 @@
 // background image if i toggle to a diffent img for sleep: img src="https://images-na.ssl-images-amazon.com/images/I/71ut-GH-boL._AC_SX522_.jpg"'
 //   );
 
+// charmeleon img src "https://66.media.tumblr.com/tumblr_ma4fpfD6Tu1rfjowdo1_500.gif"
+
+//charlizard img src "https://66.media.tumblr.com/tumblr_ma4fsg8aDZ1rfjowdo1_500.gif"
+
 // Specifications
 // Create a repo for your tomagotchi pet
 // make a commit after you finish each one of the following
@@ -26,8 +30,12 @@
 $("#start").on("click", function () {
   let name = prompt("What is your name?");
   alert(
-    `Hi ${name}! Name your pet in the input below, then it's time to go meet your new family member!!!`
+    `Hi ${name}! Meet your new pet! We call them Charmander, but you can name them whatever you'd like. First, click on 'Adopt Charmander.' Then name your pet. The timer will start once you've added you pet's name!!`
   );
+});
+
+$("#reset").click(function () {
+  $(".container").reset();
 });
 
 //https://stackoverflow.com/questions/17433557/how-to-save-user-input-into-a-variable-in-html-and-js
@@ -46,67 +54,61 @@ function getUserName() {
 }
 
 class Pet {
-  constructor(name, age) {
-    this.hunger = 0;
-    this.sleepiness = 0;
-    this.boredom = 0;
-    this.age = age;
+  constructor(name, hunger, sleepiness, boredom, age) {
     this.name = name;
+    this.hunger = hunger;
+    this.sleepiness = sleepiness;
+    this.boredom = boredom;
+    this.age = age;
+  }
+  eat() {
+    this.hunger -= 1;
+    console.log("Yum!");
+  }
+  sleep() {
+    this.sleepiness -= 1;
+    console.log("Nap time");
+  }
+
+  wake() {
+    console.log("Wakey wakey!");
+  }
+
+  play() {
+    this.boredom -= 1;
+    console.log("What fun!");
   }
 }
-// figure out how to name pet what the user enters into prompt//
+let hunger = Math.floor(Math.random() * (5 - 1 + 1)) + 1;
+let sleepiness = Math.floor(Math.random() * (5 - 1 + 1)) + 1;
+let boredom = Math.floor(Math.random() * (5 - 1 + 1)) + 1;
+let name;
 
-const Baby = new Pet(name, 5);
-const Adult = new Pet(name, 10);
-const Elder = new Pet(name, 15);
+let Bulbasaur = new Pet(name, hunger, sleepiness, boredom, 0);
+// let Abra = new Pet(name, hunger, sleepiness, boredom, 0);
+// let Charmander = new Pet(name, hunger, sleepiness, boredom, 0);
 
-console.log(Baby, Adult, Elder);
-
-// end of game ?
-// if (this.hunger >= 10 || this.sleepiness >= 10 || this.boredom >= 10) {
-//   console.log("Game over!");
-//}
+console.log(Bulbasaur);
 
 var subButton = document.getElementById("subButton");
 subButton.addEventListener("click", getUserName, false);
 
-//Submit name buton dissappears when clicked - IT WORKS!
+//Submit name button dissappears when clicked - IT WORKS!
 
 $("#subButton").on("click", (event) => {
   // $(event.currentTarget) refers to the '#menu' element that was clicked.
   $(event.currentTarget).hide();
 });
 
-$("#subButton").on("click", () => {
+$("#charmander").on("click", () => {
   $("#egg").attr(
     "src",
-    "https://i.pinimg.com/236x/6d/e6/1d/6de61dc6e639eff6b8082e568ab06783.jpg"
-  );
-});
-
-$("#elephant").on("click", () => {
-  $("#egg").attr(
-    "src",
-    "https://i.pinimg.com/236x/6d/e6/1d/6de61dc6e639eff6b8082e568ab06783.jpg"
-  );
-});
-
-$("#fox").on("click", () => {
-  $("#egg").attr(
-    "src",
-    "https://i.pinimg.com/474x/8b/14/c5/8b14c53d10a8cbb07e0fcd9aaffcffff.jpg"
-  );
-});
-
-$("#cat").on("click", () => {
-  $("#egg").attr(
-    "src",
-    "https://www.pngfind.com/pngs/m/140-1401390_pink-pixel-kitten-perler-bead-pattern-bead-sprite.png"
+    "https://thumbs.gfycat.com/ShyImperturbableAlpaca-max-1mb.gif"
   );
 });
 
 function timer() {
-  var sec = 100;
+  var sec = 500;
   var timer = setInterval(function () {
     document.getElementById("timer").innerHTML = "00:" + sec;
     sec--;
@@ -118,36 +120,6 @@ function timer() {
 
 timer();
 
-// This timer works, but it is counting down FROM. Need a timer to count down from a specified number
-
-//https://www.digitalocean.com/community/tutorials/js-building-countdown-timer
-
-// function countdownTimer() {
-//   const difference = +new Date("2020-10-01") - +new Date();
-//   let remaining = "Time's up!";
-
-//   if (difference > 0) {
-//     const parts = {
-//       days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-//       hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-//       minutes: Math.floor((difference / 1000 / 60) % 60),
-//       seconds: Math.floor((difference / 1000) % 60),
-//     };
-
-//     remaining = Object.keys(parts)
-//       .map((part) => {
-//         if (!parts[part]) return;
-//         return `${parts[part]} ${part}`;
-//       })
-//       .join(" ");
-//   }
-
-//   document.getElementById("timer").innerHTML = remaining;
-// }
-
-// countdownTimer();
-// setInterval(countdownTimer, 1000);
-
 //Button Functions
 
 //use jquery .fadeToggle to make food fade in and out when clicked
@@ -158,14 +130,45 @@ timer();
 // $('#menu').fadeToggle();
 // });
 
+const feed = document.getElementById("feed");
+function feedPet() {
+  Bulbasaur.hunger -= Bulbasaur.hunger;
+  console.log("you fed me!");
+}
+
+const chooseName = document.getElementById("subButton");
+
+chooseName.addEventListener("click", petAge);
+let ageLevel = document.getElementById("age-level");
+function petAge() {
+  ageLevel.textContent = Bulbasaur.age;
+}
+chooseName.addEventListener("click", petHunger);
+let hungerLevel = document.getElementById("hunger-level");
+function petHunger() {
+  hungerLevel.textContent = Bulbasaur.hunger;
+}
+
+chooseName.addEventListener("click", petBoredom);
+let boredomLevel = document.getElementById("boredom-level");
+function petBoredom() {
+  boredomLevel.textContent = Bulbasaur.hunger;
+}
+
+chooseName.addEventListener("click", petSleepiness);
+let sleepinessLevel = document.getElementById("sleepiness-level");
+function petSleepiness() {
+  sleepinessLevel.textContent = Bulbasaur.sleepiness;
+}
+
 $("#feed").click(function () {
-  Pet.food += 1;
+  Bulbasaur.hunger -= 1;
 });
 
 //use jquery .fadeToggle to fade in and out a toy when button is c;icked
 
 $("#play").click(function () {
-  Pet.activity += 1;
+  Bulbasaur.boredom -= 1;
 });
 
 // Potentially use sligeToggle to make the moon rise and fall when sleep is clicked. Also, change opacity so the screen darkens when sleep is clicked. Do the opposite for wake up (or take wake up out if I can set a timer of sorts on this function.
@@ -189,21 +192,12 @@ $("#play").click(function () {
 //   $("backgounde").toggle("slow", 0.5, function () {});
 // });
 
-$("#sleep").on("click", (event) => {
-  $();
-});
+// $("#sleep").click(function () {
+//   $(".container").("slow", 100);
+// });
 
 // $(".sleep").on({
 //   click: function () {
-
-//????????
-// $("#sleep").on("click", function () {
-//   //   Pet.sleep += 1;
-//   $("#sleep").css(
-//     "background-image",
-//     'img src="https://images-na.ssl-images-amazon.com/images/I/71ut-GH-boL._AC_SX522_.jpg"'
-//   );
-// });
 
 ///progress meters - this works and the bar slowly gets bigger - need to figure out how to make smaller when buttons are clicked
 //https://www.w3schools.com/howto/howto_js_progressbar.asp
@@ -298,26 +292,7 @@ function moveAge() {
 
 // moveAge();
 
-class Person {
-  constructor(name, age, eyes, hair) {
-    this.legs = 2;
-    this.arms = 2;
-    this.name = name;
-    this.age = age;
-    this.eyes = eyes;
-    this.hair = hair;
-  }
-  setHair(hairColor) {
-    this.hair = hairColor;
-  }
-  greet(otherPerson) {
-    console.log("hi " + otherPerson + "!");
-  }
-  jump() {
-    console.log("weeee!");
-  }
-}
-
-class SuperHero extends Person {}
-const superman = new SuperHero("Clark Kent", 30, "blue", "black");
-console.log(superman);
+// end of game ?
+// if (this.hunger >= 10 || this.sleepiness >= 10 || this.boredom >= 10) {
+//   console.log("Game over!");
+//}
