@@ -12,13 +12,13 @@
   background-position: center;
 }
 
-.container-reset {
+.container-night {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   font-family: Ranchers, sans-serif;
-  background-image: url(https://wallpaperaccess.com/full/1128300.jpg);
+  background-image: url(https://images-na.ssl-images-amazon.com/images/I/71ut-GH-boL._AC_SX522_.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
@@ -75,20 +75,20 @@
   color: teal;
 }
 
- .pet {
+/* .pet {
   background-color: #9DE2FF;
   margin: 20px 0 0 0;
   width: 100px;
   height: 150px;
   border-radius: 50%;
   position: relative;
-} 
+}  */
 
- #egg {
+#egg {
   width: 100px;
   height: 150px;
   margin: 0 auto;
-} 
+}
 #subButton {
   color: teal;
   border-radius: 30px;
@@ -125,13 +125,13 @@ button:hover {
   width: 15em;
   border: 1px solid #333;
   box-shadow: 8px 8px 5px #444;
-  padding: 8px 12px;
+  padding: 8px 10px;
   background-image: linear-gradient(180deg, #fff, #ddd 40%, #ccc);
 }
 #timer {
   color: black;
-  font-size: 50px;
-  margin; 0 auto;
+  font-size: 30px;
+  margin: 10px 0 20px 0;
 }
 
 /* #Progress_Status { 

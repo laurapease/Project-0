@@ -1,6 +1,8 @@
 // background image if i toggle to a diffent img for sleep: img src="https://images-na.ssl-images-amazon.com/images/I/71ut-GH-boL._AC_SX522_.jpg"'
 //   );
 
+//charmander: img src "https://thumbs.gfycat.com/ShyImperturbableAlpaca-max-1mb.gif"
+
 // charmeleon img src "https://66.media.tumblr.com/tumblr_ma4fpfD6Tu1rfjowdo1_500.gif"
 
 //charlizard img src "https://66.media.tumblr.com/tumblr_ma4fsg8aDZ1rfjowdo1_500.gif"
@@ -21,7 +23,7 @@
 // Style the page.
 // Increase your pet's age every x minutes
 // Increase your pet's Hunger, Sleepiness, and Bored metrics on an interval of your choosing.
-// You pet should die if Hunger, Boredom, or Sleepiness hits 0.
+// You pet should die if Hunger, Boredom, or Sleepiness hits 10.
 // Morph your pet at certain ages.
 // Animate your pet across the screen while it's alive.
 
@@ -34,11 +36,13 @@ $("#start").on("click", function () {
   );
 });
 
-$("#reset").click(function () {
-  $(".container").reset();
-});
+// HOW DO I RESET THE PAGE WITH A BUTTON CLICK??
 
-//https://stackoverflow.com/questions/17433557/how-to-save-user-input-into-a-variable-in-html-and-js
+// $("#reset").click(function () {
+//   $(".container").reset();
+// });
+
+//SOURCE: https://stackoverflow.com/questions/17433557/how-to-save-user-input-into-a-variable-in-html-and-js
 
 function getUserName() {
   var nameField = document.getElementById("nameField").value;
@@ -79,16 +83,17 @@ class Pet {
     console.log("What fun!");
   }
 }
+
 let hunger = Math.floor(Math.random() * (5 - 1 + 1)) + 1;
 let sleepiness = Math.floor(Math.random() * (5 - 1 + 1)) + 1;
 let boredom = Math.floor(Math.random() * (5 - 1 + 1)) + 1;
 let name;
 
-let Bulbasaur = new Pet(name, hunger, sleepiness, boredom, 0);
+let Charmander = new Pet((name = "Charmander"), hunger, sleepiness, boredom, 0);
 // let Abra = new Pet(name, hunger, sleepiness, boredom, 0);
 // let Charmander = new Pet(name, hunger, sleepiness, boredom, 0);
 
-console.log(Bulbasaur);
+console.log(Charmander);
 
 var subButton = document.getElementById("subButton");
 subButton.addEventListener("click", getUserName, false);
@@ -100,6 +105,26 @@ $("#subButton").on("click", (event) => {
   $(event.currentTarget).hide();
 });
 
+//Would love to make the ipiut field hide when subButton is clicked. Work on that.
+
+$("#charmander").on("click", () => {
+  $("#egg").attr(
+    "src",
+    "https://thumbs.gfycat.com/ShyImperturbableAlpaca-max-1mb.gif"
+  );
+});
+
+// NOT WORKING
+
+$("#charmeleon").on("click", () => {
+  $("#egg").attr(
+    "src",
+    "https://66.media.tumblr.com/tumblr_ma4fpfD6Tu1rfjowdo1_500.gif"
+  );
+});
+
+// NOT WORKING
+
 $("#charmander").on("click", () => {
   $("#egg").attr(
     "src",
@@ -108,9 +133,9 @@ $("#charmander").on("click", () => {
 });
 
 function timer() {
-  var sec = 500;
+  var sec = 300;
   var timer = setInterval(function () {
-    document.getElementById("timer").innerHTML = "00:" + sec;
+    document.getElementById("timer").innerHTML = "Timer: " + sec + " seconds";
     sec--;
     if (sec < 0) {
       clearInterval(timer);
@@ -130,10 +155,10 @@ timer();
 // $('#menu').fadeToggle();
 // });
 
-const feed = document.getElementById("feed");
+let feed = document.getElementById("feed");
 function feedPet() {
-  Bulbasaur.hunger -= Bulbasaur.hunger;
-  console.log("you fed me!");
+  Charmander.hunger = Charmander.hunger - 1;
+  alert("you fed me!");
 }
 
 const chooseName = document.getElementById("subButton");
@@ -141,34 +166,30 @@ const chooseName = document.getElementById("subButton");
 chooseName.addEventListener("click", petAge);
 let ageLevel = document.getElementById("age-level");
 function petAge() {
-  ageLevel.textContent = Bulbasaur.age;
+  ageLevel.textContent = Charmander.age;
 }
 chooseName.addEventListener("click", petHunger);
 let hungerLevel = document.getElementById("hunger-level");
 function petHunger() {
-  hungerLevel.textContent = Bulbasaur.hunger;
+  hungerLevel.textContent = Charmander.hunger;
 }
 
 chooseName.addEventListener("click", petBoredom);
 let boredomLevel = document.getElementById("boredom-level");
 function petBoredom() {
-  boredomLevel.textContent = Bulbasaur.hunger;
+  boredomLevel.textContent = Charmander.boredom;
 }
 
 chooseName.addEventListener("click", petSleepiness);
 let sleepinessLevel = document.getElementById("sleepiness-level");
 function petSleepiness() {
-  sleepinessLevel.textContent = Bulbasaur.sleepiness;
+  sleepinessLevel.textContent = Charmander.sleepiness;
 }
 
-$("#feed").click(function () {
-  Bulbasaur.hunger -= 1;
-});
-
-//use jquery .fadeToggle to fade in and out a toy when button is c;icked
+//use jquery .fadeToggle to fade in and out a toy when button is clicked
 
 $("#play").click(function () {
-  Bulbasaur.boredom -= 1;
+  Charmander.boredom -= 1;
 });
 
 // Potentially use sligeToggle to make the moon rise and fall when sleep is clicked. Also, change opacity so the screen darkens when sleep is clicked. Do the opposite for wake up (or take wake up out if I can set a timer of sorts on this function.
@@ -181,12 +202,10 @@ $("#play").click(function () {
 // EXAMPLE 2:
 // $(document).ready(function () {
 //   // Set background image of a div on click of the button
-//   $("#sleep").click(function () {
-//     var imageUrl =
-//       "https://images-na.ssl-images-amazon.com/images/I/71ut-GH-boL._AC_SX522_.jpg";
-//     $("body").css("background-image", "url(" + "https:/images-na.ssl-images-amazon.com/images/I/71ut-GH-boL._AC_SX522_.jpg" + ")");
-//   );
-// });
+
+$("#sleep").click(function () {
+  $(".container").toggleClass(".container-night");
+});
 
 // $("#sleep").click(function () {
 //   $("backgounde").toggle("slow", 0.5, function () {});
@@ -201,6 +220,21 @@ $("#play").click(function () {
 
 ///progress meters - this works and the bar slowly gets bigger - need to figure out how to make smaller when buttons are clicked
 //https://www.w3schools.com/howto/howto_js_progressbar.asp
+
+// END OF GAME
+
+const endOfGame = function () {
+  if (
+    Charmander.hunger >= 10 ||
+    Charmander.sleepiness >= 10 ||
+    Charmander.boredom >= 10 ||
+    Charmander.age >= 10
+  ) {
+    alert("Game over!");
+  }
+};
+
+endOfGame();
 
 // HUNGER METER
 
@@ -291,8 +325,3 @@ function moveAge() {
 }
 
 // moveAge();
-
-// end of game ?
-// if (this.hunger >= 10 || this.sleepiness >= 10 || this.boredom >= 10) {
-//   console.log("Game over!");
-//}
