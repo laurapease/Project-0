@@ -8,6 +8,7 @@
       href="https://fonts.googleapis.com/css2?family=Ranchers&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
     <script defer src="./scripts/app.js"></script>
     <title>Project-0</title>
@@ -17,6 +18,7 @@
 
     <!-- <img id="background" style="background-image: url('https://wallpaperaccess.com/full/1128300.jpg');">
   </img> -->
+  
     <div id="timer"></div>
     <!--START GAME/APODT PET BUTTON-->
 
@@ -55,6 +57,13 @@
 
     <!-- <div id="container"></div> -->
 
+    <!--WELLNESS METERS-->
+    <div class="meters" id="hunger">Hunger Level: <span id="hunger-level"></span></div>
+    <div class="meters" id="sleepiness">Tiredness Level: <span id="sleepiness-level"></span></div>
+    <div class="meters" id="boredom">Boredom Level: <span id="boredom-level"></span></div>
+    <div class="meters" id="age">Age: <span id="age-level"></span></div>
+
+
 <div class="pet"><img src="https://25.media.tumblr.com/tumblr_lvwmhdE0lN1qg0dcvo1_500.gif" id="egg" alt="Your Egg!"></div>
   <!-- TIMER -->
   
@@ -62,32 +71,31 @@
       <!--FEED BUTTON-->
       <button class="button" id="feed">🌮Feed me!🌮</button>
 
-      <!--SLEEP BUTTON-->
+      <!--SLEEP/WAKE UP BUTTON-->
 
       <button class="button" id="sleep">😴zzzzz😴</button>
 
-      <!--WAKE UP BUTTON-->
 
-<button class="button" id="wake">Wake up!</button>
 
       <!--PLAY BUTTON-->
 
       <button class="button" id="play">😃Let's play!😃</button>
 
+<!--EXERCISE BUTTON-->
+
+    <button class="button" id="exercise">Work out!</button>
 
     <!--EVOLVE YOUR PET-->
 
     <button class="button" id="charmeleon">Charmeleon!</button>
     <button class="button" id="charlizard">Charlizard!</button>
-      <!--WELLNESS METERS-->
+     
     </div>
-    
-    <div class="meters" id="hunger">Hunger Level: <span id="hunger-level"></span></div>
-    <div class="meters" id="sleepiness">Tiredness Level: <span id="sleepiness-level"></span></div>
-    <div class="meters" id="boredom">Boredom Level: <span id="boredom-level"></span></div>
-    <div class="meters" id="age">Age: <span id="age-level"></span></div>
-   
+    <!-- <img id="ball" src="https://thumbs.gfycat.com/LeafyUnawareFieldmouse-max-1mb.gif" alt="Ball"/> -->
 
+    <div id="ball"></div>
+    
+   
     
     <!-- <div class="meters">
         <span class="meter-button" id="hunger">Hunger Level:</span></br>
@@ -96,6 +104,8 @@
         <span class="meter-button" id="age">Age:</span>
     </div>
          -->
+
+        
   </container>
         </body>
 </html>

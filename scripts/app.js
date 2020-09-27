@@ -7,6 +7,8 @@
 
 //charlizard img src "https://66.media.tumblr.com/tumblr_ma4fsg8aDZ1rfjowdo1_500.gif"
 
+// ball art img when 'PLAY' is clicked for animation: https://www.pinclipart.com/picdir/middle/420-4200946_rainbow-beach-ball-pixel-art-sphere-clipart.png
+
 // Specifications
 // Create a repo for your tomagotchi pet
 // make a commit after you finish each one of the following
@@ -30,20 +32,37 @@
 ///Start game prompt when click Adopt Pet Button
 
 function timer() {
-  var sec = 300;
+  var sec = 200;
   var timer = setInterval(function () {
     document.getElementById("timer").innerHTML = "Timer: " + sec + " seconds";
     sec--;
     if (sec < 0) {
       clearInterval(timer);
     }
+
+    if (sec === 140) {
+      alert("Time to evolve to Charmeleon! Click the Charmeleon button!");
+      console.log("Time to evolve to Charmeleon! Click the Charmeleon button!");
+    }
+    if (sec === 80) {
+      alert("Time to evolve to Charlizard! Click the Charlizard button!");
+      console.log("Time to evolve to Charlizard! Click the Charlizard button!");
+    }
     if (sec % 10 === 0) {
       Charmander.hunger += 1;
       petHunger();
     }
     if (sec % 10 === 0) {
+      Charmander.sleepiness += 1;
+      petSleepiness();
+    }
+    if (sec % 20 === 0) {
       Charmander.age += 1;
       petAge();
+    }
+    if (sec % 10 === 0) {
+      Charmander.boredom += 1;
+      petBoredom();
     }
   }, 1000);
 }
@@ -54,6 +73,7 @@ $("#start").on("click", function () {
     `Hi ${name}! Meet your new pet! We call them Charmander, but you can name them whatever you'd like. First, click on 'Adopt Charmander.' Then name your pet. The timer will start once you've added your pet's name!!`
   );
 });
+// FEED BUTTON
 
 //SOURCE: https://stackoverflow.com/questions/17433557/how-to-save-user-input-into-a-variable-in-html-and-js
 
@@ -70,10 +90,27 @@ function getUserName() {
   }
 }
 
-let hunger = Math.floor(Math.random() * (5 - 1 + 1)) + 1;
-let sleepiness = Math.floor(Math.random() * (5 - 1 + 1)) + 1;
-let boredom = Math.floor(Math.random() * (5 - 1 + 1)) + 1;
+let hunger = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+let sleepiness = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+let boredom = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
 let name;
+
+let eat = function () {
+  this.hunger -= 1;
+  console.log("Yum!");
+};
+let sleep = function () {
+  this.sleepiness -= 1;
+  console.log("Nap time");
+};
+// wake() {
+//   console.log("Wakey wakey!");
+// }
+
+let play = function () {
+  this.boredom -= 1;
+  console.log("What fun!");
+};
 
 class Pet {
   constructor(name, hunger, sleepiness, boredom, age) {
@@ -83,23 +120,6 @@ class Pet {
     this.boredom = boredom;
     this.age = age;
   }
-  eat() {
-    this.hunger -= 1;
-    console.log("Yum!");
-  }
-  sleep() {
-    this.sleepiness -= 1;
-    console.log("Nap time");
-  }
-
-  wake() {
-    console.log("Wakey wakey!");
-  }
-
-  play() {
-    this.boredom -= 1;
-    console.log("What fun!");
-  }
 }
 
 let Charmander = new Pet((name = "Charmander"), hunger, sleepiness, boredom, 0);
@@ -108,7 +128,7 @@ let Charmander = new Pet((name = "Charmander"), hunger, sleepiness, boredom, 0);
 
 console.log(Charmander);
 
-const endOfGame = function () {
+let endOfGame = function () {
   if (
     Charmander.hunger >= 10 ||
     Charmander.sleepiness >= 10 ||
@@ -140,7 +160,14 @@ $("#subButton").on("click", (event) => {
   timer();
 });
 
+$("#sleep").on("click", function () {
+  $("container").toggleClass("dark");
+  // $("#sleep").html("☀️Wake up!☀️");
+});
+
 //Would love to make the ipiut field hide when subButton is clicked. Work on that.
+
+//Click on 'Adopt Charmander' button to hatch egg to Charmander
 
 $("#charmander").on("click", () => {
   $("#egg").attr(
@@ -204,7 +231,7 @@ function petSleepiness() {
 //use jquery .fadeToggle to fade in and out a toy when button is clicked
 
 $("#play").click(function () {
-  Charmander.boredom -= 1;
+  Charmander.boredom = Charmander.boredom - 1;
 });
 
 let feed = document.getElementById("feed");
@@ -217,8 +244,6 @@ function feedPet() {
 // $('#sleep').on('click', () => {
 //     $('#sleep').slideToggle();
 // // });
-
-//TRYING TO CHANGE BACKGROUND WHEN SLEEP BUTON IS CLICKED...WHERE CAN I STORE THE BACKGROUNG IMG AS AN ELEMENT, CLASS OR ID??
 
 // EXAMPLE 2:
 // $(document).ready(function () {
@@ -245,93 +270,3 @@ function feedPet() {
 //https://www.w3schools.com/howto/howto_js_progressbar.asp
 
 // END OF GAME
-
-// HUNGER METER
-
-// var i = 0;
-// function moveHunger() {
-//   if (i == 0) {
-//     i = 1;
-//     var elem = document.getElementById("hunger");
-//     var width = 1;
-//     var id = setInterval(frame, 1000);
-//     function frame() {
-//       if (width >= 100) {
-//         clearInterval(id);
-//         i = 0;
-//       } else {
-//         width++;
-//         elem.style.width = width + "%";
-//       }
-//     }
-//   }
-// }
-
-// // moveHunger();
-
-// //SLEEPINESS METER
-
-// var i = 0;
-// function moveSleepiness() {
-//   if (i == 0) {
-//     i = 1;
-//     var elem = document.getElementById("sleepiness");
-//     var width = 1;
-//     var id = setInterval(frame, 1000);
-//     function frame() {
-//       if (width >= 100) {
-//         clearInterval(id);
-//         i = 0;
-//       } else {
-//         width++;
-//         elem.style.width = width + "%";
-//       }
-//     }
-//   }
-// }
-
-// // moveSleepiness();
-
-// var i = 0;
-// function moveBoredom() {
-//   if (i == 0) {
-//     i = 1;
-//     var elem = document.getElementById("boredom");
-//     var width = 1;
-//     var id = setInterval(frame, 1000);
-//     function frame() {
-//       if (width >= 100) {
-//         clearInterval(id);
-//         i = 0;
-//       } else {
-//         width++;
-//         elem.style.width = width + "%";
-//       }
-//     }
-//   }
-// }
-
-// // moveBoredom();
-
-// // AGE LEVEL
-
-// var i = 0;
-// function moveAge() {
-//   if (i == 0) {
-//     i = 1;
-//     var elem = document.getElementById("age");
-//     var width = 1;
-//     var id = setInterval(frame, 3000);
-//     function frame() {
-//       if (width >= 100) {
-//         clearInterval(id);
-//         i = 0;
-//       } else {
-//         width++;
-//         elem.style.width = width + "%";
-//       }
-//     }
-//   }
-// }
-
-// moveAge();
