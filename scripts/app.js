@@ -239,15 +239,14 @@ $("#charlizard").on("click", () => {
 //   console.log("Game over!");
 // }
 
-let endOfGame = function () {
+const endOfGame = function () {
   if (
-    Charmander.hunger > 10 ||
-    Charmander.sleepiness > 10 ||
-    Charmander.boredom > 10 ||
-    Charmander.age > 10
+    hungerLevel.textContent >= 10 ||
+    sleepinessLevel.textContent >= 10 ||
+    boredomLevel.textContent >= 10 ||
+    ageLevel.textContent >= 10
   ) {
-    clearInterval(timer);
-    alert("Your pet needed more attention! Please try again.");
+    alert("Game over!");
   }
 };
 
